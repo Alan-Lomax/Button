@@ -5,7 +5,7 @@
 #include "Button.h";
 
 // Define constants here
-const bool  Activated  = true;      // Because the input is declared with input pullup, it normally reads 'true' (a high voltage) and when the button is pushed it reads 'false' or a low voltage.
+const bool  Activated  = false;      // Because the input is declared with input pullup, it normally reads 'true' (a high voltage) and when the button is pushed it reads 'false' or a low voltage.
 //                                     Some sensors invert this so using a constant like this makes the intent clear and swapping true to false is easy.
 const byte   SensPin1  = A0;        // Use this input for sensor input.
 
