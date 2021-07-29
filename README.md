@@ -42,7 +42,7 @@ At no point does the loop hang around waiting for something to happen.
     const byte   SensPin1  = A0;        // Use this input for sensor input.
 
     Button SENSOR1    (SensPin1, 5);    // Defining Sensor1 outside of setup makes it 'global' and accessable from any part of the program. Here we use a very small 5 millisecond debounce
-//                                         Note you can define as many of the Button class as you need .. and they will not interfere with each other.
+                                        // Note you can define as many of the Button class as you need .. and they will not interfere with each other.
 
     void setup() {
       Serial.begin(9600);       // for debug console
