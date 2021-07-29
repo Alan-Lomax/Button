@@ -45,8 +45,8 @@ At no point does the loop hang around waiting for something to happen.
                                         // Note you can define as many of the Button class as you need .. and they will not interfere with each other.
 
     void setup() {
-      Serial.begin(9600);       // for debug console
-      Serial.println(__FILE__); // by default I always output the file name
+      Serial.begin(9600);               // for serial monitor / debug console
+      Serial.println(__FILE__);         // by habit I always output the file name - so I know what program is running at startup.
     }
 
     void loop() {
