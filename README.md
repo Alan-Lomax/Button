@@ -2,7 +2,7 @@
 Button Class
 
 This class implements a button input complete with a variable debounce delay.
-It has no delay() calls in its implementation and requires calls to the update() method to check if time has expired.
+It has no delay() calls in its implementation so your mainline loop code can keep running doing other things.
   
 It is defined in one of two ways as follows:
   
@@ -22,32 +22,41 @@ This class can be used on many types of inputs not just pushbuttons.
 Toggle switches, infrared detectors, magnetic reed switches are all suitable for use with this class.
 With longer debounce values (much longer than 50 ms) this class effectively becomes a simple fixed 'time delay'.
 This is useful when used with sensors but long delays could be annoying when used with hand operated switches though.
-
   
 ### Files: Button.h, Button.CPP
 
-### Usage:
-Include the header file near the top of your code. (After this is done the compiler will know how to handle you using it.)
+### Example:
+Notice in this example that the loop calls the update() method and then also acts on whether the debounce time has been Activated by checking the state().
+At no point does the loop hang around waiting for something to happen. 
 
+
+    /*
+        Example of using the Button class for debouncing a switch or sensor.
+        In this case an IR sensor is connected to A0 and pulls A0 to ground when something is detected. (you could use a switch or pushbutton from A0 to ground also.)
+    */
     #include "Button.h";
 
-### Instantiation:
+    // Define constants here
+    const bool  Activated  = true;      // Because the input is declared with input pullup, it normally reads 'true' (a high voltage) and when the button is pushed it reads 'false' or a low voltage. 
+    //                                     Some sensors invert this so using a constant like this makes the intent clear and swapping true to false is easy.
+    const byte   SensPin1  = A0;        // Use this input for sensor input.
 
-An example of the class usage is shown below.
+    Button SENSOR1    (SensPin1, 5);    // Defining Sensor1 outside of setup makes it 'global' and accessable from any part of the program. Here we use a very small 5 millisecond debounce
+//                                         Note you can define as many of the Button class as you need .. and they will not interfere with each other.
 
-Before the Setup code ... define a constant 
-     const byte   SensPin1   = A0;        // Use this input for sensor input to detect TT is in position 1
+    void setup() {
+      Serial.begin(9600);       // for debug console
+      Serial.println(__FILE__); // by default I always output the file name
+    }
 
-In the Setup() code ... create a new variable using the class like this
-     Button SENSOR1    (SensPin1, 5);     // Sensor for Position 1 with a very small 5 millisecond debounce
+    void loop() {
+      SENSOR1.update();                    // See if anything has changed
 
-In the loop() code call
-     SENSOR1.update();                    // See if anything has changed
-     
-and then test if something has changed by inspecting the state
-     If (SENSOR1.state == true) {
+      if (SENSOR1.state() == Activated) {  // Has the button been pushed and the debounce time expired?
         // Do something here
-     }
+          Serial.println("SENSOR1.state() is Activated");    // message is same as logic test - so we know this logic test is working.
+      }
+    }
 
 
 ### Methods
