@@ -1,4 +1,4 @@
-# Button
+# ButtonClass
 Button Class
 
 This class implements a button input complete with a variable debounce delay.
@@ -23,7 +23,7 @@ Toggle switches, infrared detectors, magnetic reed switches are all suitable for
 With longer debounce values (much longer than 50 ms) this class effectively becomes a simple fixed 'time delay'.
 This is useful when used with sensors but long delays could be annoying when used with hand operated switches though.
   
-### Files: Button.h, Button.CPP
+### Files: ButtonClass.h, ButtonClass.CPP
 
 ### Example:
 Notice in this example that the loop calls the update() method and then also acts on whether the debounce time has been Activated by checking the state().
@@ -34,7 +34,7 @@ At no point does the loop hang around waiting for something to happen.
         Example of using the Button class for debouncing a switch or sensor.
         In this case an IR sensor is connected to A0 and pulls A0 to ground when something is detected. (you could use a switch or pushbutton from A0 to ground also.)
     */
-    #include "Button.h";
+    #include "ButtonClass.h";
 
     // Define constants here
     const bool  Activated  = true;      // Because the input is declared with input pullup, it normally reads 'true' (a high voltage) and when the button is pushed it reads 'false' or a low voltage. 

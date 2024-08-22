@@ -2,7 +2,7 @@
     Example of using the Button class for debouncing a switch or sensor.
     In this case an IR sensor is connected to A0 and pulls A0 to ground when something is detected. (you could use a switch or pushbutton from A0 to ground also.)
 */
-#include "Button.h";
+#include "ButtonClass.h";
 
 // Define constants here
 const bool  Activated  = false;      // Because the input is declared with input pullup, it normally reads 'true' (a high voltage) and when the button is pushed it reads 'false' or a low voltage.

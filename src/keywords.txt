@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map for Button
+# Syntax Coloring Map for ButtonClass
 #######################################
 # KEYWORD1 is generally used for the classes that you define in your library.
 # KEYWORD2 is used for the public member functions of the class. Basically these are the class' methods.
@@ -7,7 +7,7 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-Button	KEYWORD1
+ButtonClass	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
